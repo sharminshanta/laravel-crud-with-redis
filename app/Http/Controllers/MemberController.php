@@ -149,7 +149,6 @@ class MemberController extends Controller
         $messages = [
             'first_name.required' => 'First name is required.',
             'last_name.required' => 'Last name is required.',
-            'gmail_address.required' => 'Gmail Address is required',
             'role.required' => 'Role is required',
             'location.required' => 'Location is required.',
         ];
