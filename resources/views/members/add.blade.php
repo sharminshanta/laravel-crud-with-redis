@@ -37,7 +37,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <label for="eAddress">Email Address <span class="text-danger">*</span></label>
-                                    <input type="email" name="gmail_address" maxlength="80" class="form-control" placeholder="Enter Email Address" required="required" value="{{old('email_address')}}">
+                                    <input type="email" name="gmail_address" maxlength="80" class="form-control" placeholder="Enter Email Address" required="required" value="{{old('gmail_address')}}">
                                     <span class="text-center text-danger">{{$errors->has('gmail_address') ? $errors->first('gmail_address') : ''}}</span>
                                 </div>
                             </div>
