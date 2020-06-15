@@ -24,6 +24,7 @@
                                 <div class="col-lg-6 col-md-6">
                                     <label for="fname">First Name <span class="text-danger">*</span></label>
                                     <input type="text" name="first_name" maxlength="20" class="form-control" placeholder="Enter First Name" value="{{$member->first_name}}" required="required">
+                                    <input type="hidden" name="member_id" class="form-control" value="{{$member->id}}">
                                     <span class="text-center text-danger">{{$errors->has('first_name') ? $errors->first('first_name') : ''}}</span>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
