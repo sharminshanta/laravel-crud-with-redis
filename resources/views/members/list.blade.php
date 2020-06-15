@@ -37,7 +37,18 @@
                         <td>{{ucfirst(trans($member->location))}}</td>
                         <td>
                             <a href="{{url('/members/edit', $member->id)}}" title="Update this ?" class="text-info"><i class="fa fa-edit"></i></a>
-                            <a href="#" title="Delete this ?" class="text-danger"><i class="fa fa-trash"></i></a>
+                            <a class="text-danger" title="Delete this member ?" href="{{url('/members/delete', $member->uuid)}}" onclick="event.preventDefault();
+                                    var check = confirm('Are you sure to delete this member ?');
+                                    if(check){
+                                    document.getElementById('delete-member{{$member->id}}').submit();
+                                    }
+                                    ">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                            <form action="{{url('/members/delete')}}" id="delete-member{{$member->id}}" method="post">
+                                @csrf
+                                <input type="hidden" name="member_id" value="{{$member->id}}">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
