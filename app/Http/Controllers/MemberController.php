@@ -109,15 +109,21 @@ class MemberController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $memberModel = New MembersModel();
+        $updateMember = $memberModel->updateMember($request);
+
+        if ($updateMember === true) {
+            Session::flash('success', 'Member has updated successfully !');
+            return redirect('/members');
+        }
+
+        Session::flash('error', 'Member update process is failed !');
+        return redirect()->back();
     }
 
     /**
