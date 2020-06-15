@@ -21,6 +21,7 @@ class MemberController extends Controller
      */
     public function index()
     {
+        //Cache::forget('get_members_cache');
 
         /**
          * Just Enable the database query log to see query log in text
