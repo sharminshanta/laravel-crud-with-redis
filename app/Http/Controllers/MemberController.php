@@ -93,6 +93,7 @@ class MemberController extends Controller
     public function edit($id)
     {
         //Cache::forget('get_member_details');
+
         /**
          * Update member form view
          * Update member through this details
