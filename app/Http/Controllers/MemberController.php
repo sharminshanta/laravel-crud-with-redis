@@ -26,24 +26,6 @@ class MemberController extends Controller
          * Just Enable the database query log to see query log in text
          * And find the query is from db or cache
          */
-       /* $cachedData  = Redis::get('get_all_members');
-        if(empty($cachedData)){
-            DB::connection()->enableQueryLog();
-            $members = MembersModel::getAll();
-            $log = DB::getQueryLog();
-            print_r($log);
-
-            Redis::set('get_all_members', $members);
-        }*/
-
-        //dd($cachedData);
-
-        /*return view('members.list', [
-            'members' => json_decode($cachedData),
-        ]);*/
-
-        //Cache::forget('get_members_cache');
-
         DB::connection()->enableQueryLog();
         $members = MembersModel::getAll();
         $log = DB::getQueryLog();
