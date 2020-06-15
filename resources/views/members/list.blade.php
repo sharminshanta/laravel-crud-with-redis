@@ -43,7 +43,7 @@
                                     document.getElementById('delete-member{{$member->id}}').submit();
                                     }
                                     ">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="fa fa-trash"></i>
                             </a>
                             <form action="{{url('/members/delete')}}" id="delete-member{{$member->id}}" method="post">
                                 @csrf
