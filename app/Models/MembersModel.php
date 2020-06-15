@@ -47,7 +47,7 @@ class MembersModel extends Model
     public static function getAll()
     {
         $result = Cache::remember('get_members_cache', 10, function (){
-            return self::get();
+            return self::orderBy('id', 'DESC')->get();
         });
 
         return $result;
