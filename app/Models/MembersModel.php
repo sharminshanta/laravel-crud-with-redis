@@ -38,7 +38,7 @@ class MembersModel extends Model
      */
     public function __construct()
     {
-        $this->storage = Redis::connection();
+        //$this->storage = Redis::connection();
     }
 
     /**
@@ -59,7 +59,7 @@ class MembersModel extends Model
      */
     public function addMember($postData)
     {
-        $this->code = "MB". substr(uniqid('', true), -4);;
+        $this->uuid = "MB". substr(uniqid('', true), -4);;
         $this->first_name = $postData['first_name'];
         $this->last_name = $postData['last_name'];
         $this->gmail_address = $postData['gmail_address'];
