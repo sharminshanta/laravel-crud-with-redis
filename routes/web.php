@@ -11,31 +11,6 @@
 |
 */
 
-/*Route::get('/', function () {
-   $redis = app()->make('redis');
-   $redis->set('key', 'shanta');
-   dd($redis->get('key'));
-});*/
-
-/*Route::get('/', function () {
-    // redis has students.all key exists
-    // posts found then it will return all post without touching the database
-    if ($students = \Illuminate\Support\Facades\Redis::get('StudentsModel.getAll')) {
-        \Illuminate\Support\Facades\DB::connection()->enableQueryLog();
-        print_r(\Illuminate\Support\Facades\DB::getQueryLog());
-        return json_decode($students);
-    }
-
-    // get all students
-    $students = \App\Models\StudentsModel::all();
-
-    // store into redis
-    \Illuminate\Support\Facades\Redis::set('StudentsModel.getAll', $students);
-
-    // return all students
-    return $students;
-});*/
-
 /**
  * Default route
  * Actually all members list page is displayed here
