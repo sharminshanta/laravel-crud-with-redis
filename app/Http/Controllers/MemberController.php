@@ -127,16 +127,39 @@ class MemberController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        if ($request->member_id !== null || $request->member_id === "") {
+            $memberInfo = MembersModel::find($request->member_id);
+
+            if ($memberInfo !== null) {
+
+                if ($memberInfo->delete() === true) {
+                    Session::flash('success', 'Member has deleted successfully !');
+                    $members = MembersModel::getAll();
+                    Redis::set('get_members_cache', $members);
+                    return redirect('/members');
+                }
+
+                Session::flash('error', 'Member didn\'t deleted !');
+                return redirect()->back();
+            }
+
+            Session::flash('error', 'Invalid Member info Data!');
+            return redirect()->back();
+        }
+
+        Session::flash('error', 'Invalid Member Data!');
+        return redirect()->back();
     }
 
+    /**
+     * @param array $data
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Validation\Factory|\Illuminate\Contracts\Validation\Validator
+     */
     protected function addMemberValidation(array $data){
         $rules = [
             'first_name'  => 'required',
